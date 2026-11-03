@@ -1,0 +1,61 @@
+services:
+  mycardos:
+    container_name: mycard-os
+    build:
+      context: ./src/mycardos
+      dockerfile: docker/Dockerfile
+    hostname: mycardos
+    ports:
+      - "58080:80"
+    volumes:
+      - ./src/mycardos:/app:rw #開發環境使用，Production 需移除
+      - ./media:/app/media:rw
+      - ./log:/app/log:rw
+      - ./configure.conf:/app/configure.conf:ro
+    restart: always
+
+  mycard-vision:
+    build:
+      context: ./src/vision
+      dockerfile: Dockerfile
+    container_name: mycard-vision
+    restart: unless-stopped
+    volumes:
+      - ./src/vision:/app:rw #開發環境使用，Production 需移除
+    ports:
+      - "18081:8000"
+    environment:
+      OMP_NUM_THREADS: "4"
+      OPENBLAS_NUM_THREADS: "1"
+
+  ffmpeg:
+    container_name: mycard-ffmpeg
+    build:
+      context: ./docker/ffmpeg
+      dockerfile: Dockerfile
+    hostname: ffmpeg
+    volumes:
+      - /dev:/host-dev:rw
+      - ./media:/app/media:rw
+      - ./configure.conf:/app/configure.conf:ro
+    device_cgroup_rules:
+      - 'c 81:* rwm'
+    ports:
+      - "127.0.0.1:58081:8080"
+    restart: unless-stopped
+
+
+  # redis:
+  #   image: redis:7.4-alpine
+  #   container_name: redis
+  #   restart: "always"
+  #   ports:
+  #     - "6379:6379"  
+  #   command: >
+  #     redis-server
+  #     --appendonly no
+  #     --save ""
+  #     --requirepass <YOUR_PASSWD>
+  #     --maxmemory 2048mb
+  #     --maxmemory-policy allkeys-lru
+  #     --timeout 0  

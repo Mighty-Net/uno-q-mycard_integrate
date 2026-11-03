@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+DIR_PATH=$(dirname "$(readlink -f "$0")")
+
+# Update mycardos
+cd "$DIR_PATH/src/mycardos"
+git pull origin main
+
+# Update vision
+cd "$DIR_PATH/src/vision"
+git pull origin main
+
+# Rebuild and restart Docker containers
+cd "$DIR_PATH"
+docker --context rootless compose up -d --build
+
+# Show container status
+docker --context rootless compose ps
+
+echo -e "\n\nUpdate finished. ($(date))\n"

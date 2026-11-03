@@ -1,0 +1,6 @@
+[submodule "src/mycardos"]
+	path = src/mycardos
+	url = git@github.com:Mighty-Net/uno-q-mycardos.git
+[submodule "src/vision"]
+	path = src/vision
+	url = git@github.com:Mighty-Net/uno-q-mycard_vision.git

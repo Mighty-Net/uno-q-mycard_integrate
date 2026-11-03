@@ -1,0 +1,32 @@
+# ============================================================
+# Camera Configuration
+# ============================================================
+# Connect a USB camera to your UNO Q.
+#
+# To list available cameras, execute:
+#   ls -l /dev/v4l/by-id/
+#
+# Example output:
+#   usb-046d_C270_HD_WEBCAM_200901010001-video-index0 -> ../../video0
+#
+# Copy the camera ID (filename only, not the full path).
+# Use the entry ending in "video-index0" if it is the video capture node.
+#
+# Example:
+#   CAMERA_ID=usb-046d_C270_HD_WEBCAM_200901010001-video-index0
+#
+# Note:
+# - The camera ID varies depending on your USB camera.
+# - If multiple cameras are connected, select the correct device.
+# - Avoid using /dev/video0 directly because the number may change.
+#
+CAMERA_ID=<YOUR_CAMERA_ID>
+
+
+# ============================================================
+# Cloud AI Configuration
+# ============================================================
+# API key for the Cloud AI service (Gemma 4).
+# Contact the service administrator to obtain your API key.
+#
+AIAPIKEY=<YOUR_API_KEY>

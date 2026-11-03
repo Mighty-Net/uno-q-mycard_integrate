@@ -1,0 +1,9 @@
+docker-compose.yml
+configure.conf
+log
+update.sh
+src/*
+media/*
+!/media/.gitkeep
+.DS_Store
+.env
