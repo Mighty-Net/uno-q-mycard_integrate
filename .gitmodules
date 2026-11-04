@@ -5,5 +5,5 @@
 	path = src/vision
 	url = git@github.com:Mighty-Net/uno-q-mycard_vision.git
 [submodule "src/mcu"]
-	path = src/vision
+	path = src/mcu
 	url = git@github.com:Mighty-Net/uno-q-mycardmcu.git
