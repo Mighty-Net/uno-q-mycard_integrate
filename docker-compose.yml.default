@@ -17,7 +17,7 @@ services:
   mycard-vision:
     build:
       context: ./src/vision
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     container_name: mycard-vision
     restart: unless-stopped
     volumes:
