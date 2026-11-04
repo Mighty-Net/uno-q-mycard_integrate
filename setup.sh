@@ -22,6 +22,16 @@ if [ ! -f "./update.sh" ]; then
     chmod +x ./update.sh
 fi
 
+# Install required host packages
+if ! command -v socat >/dev/null 2>&1; then
+    echo "[INFO] Installing socat..."
+    sudo apt-get update
+    sudo apt-get install -y socat
+fi
+
+# Initialize runtime directory for Unix sockets
+mkdir -p ./runtime
+
 # Check required configuration
 if grep -qE '^(CAMERA_ID|AIAPIKEY)=<[^>]+>' ./configure.conf; then
     echo ""
