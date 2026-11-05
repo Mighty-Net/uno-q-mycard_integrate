@@ -1,3 +1,27 @@
+## UNO Q Environment Setup
+
+Before deploying MyCard, prepare the Arduino UNO Q environment using the provided setup script.
+
+This script configures an independent Rootless Docker environment and persistent hardware device permissions without modifying the factory Docker environment.
+
+It performs the following tasks:
+
+- Installs the required Rootless Docker dependencies.
+- Configures an independent Rootless Docker context and service.
+- Enables automatic startup through systemd.
+- Configures persistent device permissions for Camera, GPU, DSP, and GPIO access.
+- Verifies the Rootless Docker environment.
+
+Run the script as the default `arduino` user:
+
+```bash
+bash unoq-rootless-setup.sh
+```
+
+This setup is intended for the factory-installed Arduino UNO Q environment and normally only needs to be performed once.
+
+After the environment is configured, continue with the MyCard installation steps below.
+
 # UNO Q MyCard
 
 A business card detection and recognition demo powered by **Arduino UNO Q**, combining Edge AI with Cloud AI.
