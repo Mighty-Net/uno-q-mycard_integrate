@@ -26,7 +26,7 @@ CAMERA_ID=<YOUR_CAMERA_ID>
 # ============================================================
 # Cloud AI Configuration
 # ============================================================
-# API key for the Cloud AI service (Gemma 4).
+# API settings for the Cloud AI service (Gemma 4).
 # Contact the service administrator to obtain your API key.
 #
 AIAPIURL=<YOUR_API_URL>
